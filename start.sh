@@ -1,6 +1,6 @@
 #!/bin/sh -ex
 
-for server_name in "ftps_basic ftps_implicit ftps_tls"
+for server_name in ftps_basic ftps_implicit ftps_tls
 do
     echo Generating self-signed certificate ${server_name}
     mkdir -p /etc/vsftpd/${server_name}
