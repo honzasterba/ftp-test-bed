@@ -2,7 +2,7 @@ FROM alpine:3.15
 
 RUN apk --no-cache add vsftpd openssl
 
-RUN adduser ftp_user && echo 'ftp_user:secret_pass' | chpasswd
+RUN adduser --disabled-password ftp_user && echo 'ftp_user:secret_pass' | chpasswd
 
 COPY conf /etc/vsftpd/conf
 COPY data /home/ftp_user
