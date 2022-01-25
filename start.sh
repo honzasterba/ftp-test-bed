@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -ex
 
 for server_name in "ftps_basic ftps_implicit ftps_tls"
 do
