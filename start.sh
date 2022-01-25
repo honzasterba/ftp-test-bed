@@ -19,7 +19,7 @@ done
 /usr/sbin/vsftpd $CONF_ROOT/vsftpd_anonymous.conf
 /usr/sbin/vsftpd $CONF_ROOT/vsftpd_basic.conf
 /usr/sbin/vsftpd $CONF_ROOT/vsftpd_ftps.conf
-/usr/sbin/vsftpd $CONF_ROOT/vsftpd_fpts_implicit.conf
-/usr/sbin/vsftpd $CONF_ROOT/vsftpd_fpts_tls.conf
+/usr/sbin/vsftpd $CONF_ROOT/vsftpd_ftps_implicit.conf
+/usr/sbin/vsftpd $CONF_ROOT/vsftpd_ftps_tls.conf
 
 tail -F /var/*.log
