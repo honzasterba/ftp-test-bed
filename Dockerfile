@@ -2,14 +2,15 @@ FROM alpine:3.15
 
 RUN apk --no-cache add vsftpd openssl
 
+RUN useradd -ms /bin/bash ftp_user && echo 'ftp_user:secret_pass' | chpasswd
+
 COPY conf /etc/vsftpd/conf
+COPY data /home/ftp_user
 COPY start.sh /bin
 
 RUN chmod +x /bin/start.sh
 RUN mkdir -p /home/vsftpd/
 RUN chown -R ftp:ftp /home/vsftpd/
-
-VOLUME /home/guest
 
 STOPSIGNAL SIGTERM
 
