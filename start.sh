@@ -14,8 +14,10 @@ do
     chmod 755 /etc/vsftpd/${server_name}/vsftpd.pkcs12
 done
 
-&>/dev/null /usr/sbin/vsftpd vsftpd_anonymous.conf
-&>/dev/null /usr/sbin/vsftpd vsftpd_basic.conf
-&>/dev/null /usr/sbin/vsftpd vsftpd_ftps.conf
-&>/dev/null /usr/sbin/vsftpd vsftpd_fpts_implicit.conf
-&>/dev/null /usr/sbin/vsftpd vsftpd_fpts_tls.conf
+&>/var/anon.log /usr/sbin/vsftpd vsftpd_anonymous.conf
+&>/var/basic.log /usr/sbin/vsftpd vsftpd_basic.conf
+&>/var/ftps.log /usr/sbin/vsftpd vsftpd_ftps.conf
+&>/var/fpts_impl.log /usr/sbin/vsftpd vsftpd_fpts_implicit.conf
+&>/var/ftps_tls.log /usr/sbin/vsftpd vsftpd_fpts_tls.conf
+
+tail -F /var/*.log
