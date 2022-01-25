@@ -2,7 +2,7 @@ FROM alpine:3.15
 
 RUN apk --no-cache add vsftpd openssl
 
-COPY conf /etc/vsftp/conf
+COPY conf /etc/vsftpd/conf
 COPY start.sh /bin
 
 RUN chmod +x /bin/start.sh

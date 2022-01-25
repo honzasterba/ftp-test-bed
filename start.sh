@@ -1,5 +1,7 @@
 #!/bin/sh -ex
 
+CONF_ROOT=/etc/vsftpd/conf
+
 for server_name in ftps_basic ftps_implicit ftps_tls
 do
     echo Generating self-signed certificate ${server_name}
@@ -14,10 +16,10 @@ do
     chmod 755 /etc/vsftpd/${server_name}/vsftpd.pkcs12
 done
 
-&>/var/anon.log /usr/sbin/vsftpd vsftpd_anonymous.conf
-&>/var/basic.log /usr/sbin/vsftpd vsftpd_basic.conf
-&>/var/ftps.log /usr/sbin/vsftpd vsftpd_ftps.conf
-&>/var/fpts_impl.log /usr/sbin/vsftpd vsftpd_fpts_implicit.conf
-&>/var/ftps_tls.log /usr/sbin/vsftpd vsftpd_fpts_tls.conf
+&>/var/anon.log /usr/sbin/vsftpd $CONF_ROOT/vsftpd_anonymous.conf
+&>/var/basic.log /usr/sbin/vsftpd $CONF_ROOT/vsftpd_basic.conf
+&>/var/ftps.log /usr/sbin/vsftpd $CONF_ROOT/vsftpd_ftps.conf
+&>/var/fpts_impl.log /usr/sbin/vsftpd $CONF_ROOT/vsftpd_fpts_implicit.conf
+&>/var/ftps_tls.log /usr/sbin/vsftpd $CONF_ROOT/vsftpd_fpts_tls.conf
 
 tail -F /var/*.log
